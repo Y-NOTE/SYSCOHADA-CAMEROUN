@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <openerp> 
+   <data noupdate="1">
+    
+       <record id="base.XAF" model="res.currency">
+            <field name="accuracy">0</field>
+       </record>
+       
+       <record model="account.tax.code.template" id="tax_base_impot">
+         <field name="name">Base: Impot sur les sociétés</field>
+         <field name="code">IS</field>
+         <field name="sign">1</field>
+         <field name="notprintable" eval="True"/>
+         <field name="parent_id" ref="l10n_syscohada.vat_syscohada_tax_root"/>
+       </record>
+       
+       <record model="account.tax.code.template" id="tax_montant_impot">
+         <field name="name">Montant: Impot sur les sociétés</field>
+         <field name="code">IS</field>
+         <field name="sign">1</field>
+         <field name="notprintable" eval="True"/>
+         <field name="parent_id" ref="l10n_syscohada.vat_syscohada_tax_root"/>
+       </record>
+       
+       <record model="account.tax.template" id="is_retenue">
+           <field name="name">IS RETENUE</field>
+           <field name="description">IS-RETENUE</field>
+           <field name="chart_template_id" ref="l10n_syscohada.syscohada_chart_template"/>
+           <field name="amount" eval="-0.011"/>
+           <field name="price_include" eval="True"/>
+           <field name="type">percent</field>
+           <field name="type_tax_use">sale</field>
+           <field name="sequence">1</field>
+           <field name="account_collected_id" ref="l10n_syscohada.pcg_4478"/>
+           <field name="account_paid_id" ref="l10n_syscohada.pcg_4478"/>
+           <field name="base_code_id" ref="tax_base_impot"/>
+           <field name="ref_base_code_id" ref="tax_base_impot"/>
+           <field name="tax_code_id" ref="tax_montant_impot"/>
+           <field name="ref_tax_code_id" ref="tax_montant_impot"/>
+           <field name="base_sign" eval="1"/>
+           <field name="tax_sign" eval="1"/>       
+           <field name="ref_base_sign" eval="1"/>
+           <field name="ref_tax_sign" eval="1"/>        
+       </record>
+       
+       <record model="account.tax.template" id="precompte_is">
+           <field name="name">PRECOMPTE IS</field>
+           <field name="description">PRECOMPTE-IS</field>
+           <field name="chart_template_id" ref="l10n_syscohada.syscohada_chart_template"/>
+           <field name="amount" eval="-0.011"/>
+           <field name="price_include" eval="True"/>
+           <field name="type">percent</field>
+           <field name="type_tax_use">purchase</field>
+           <field name="sequence">1</field>
+           <field name="account_collected_id" ref="l10n_syscohada.pcg_4478"/>
+           <field name="account_paid_id" ref="l10n_syscohada.pcg_4478"/>
+           <field name="base_code_id" ref="tax_base_impot"/>
+           <field name="ref_base_code_id" ref="tax_base_impot"/>
+           <field name="tax_code_id" ref="tax_montant_impot"/>
+           <field name="ref_tax_code_id" ref="tax_montant_impot"/>
+           <field name="base_sign" eval="1"/>
+           <field name="tax_sign" eval="1"/>       
+           <field name="ref_base_sign" eval="1"/>
+           <field name="ref_tax_sign" eval="1"/>        
+       </record>
+       
+       <record model="account.tax.template" id="tax_tsr">
+           <field name="name">TAXE SPECIALE SUR LES REVENUS</field>
+           <field name="description">TSR</field>
+           <field name="chart_template_id" ref="l10n_syscohada.syscohada_chart_template"/>
+           <field name="amount" eval="-0.15"/>
+           <field name="price_include" eval="False"/>
+           <field name="type">percent</field>
+           <field name="type_tax_use">purchase</field>
+           <field name="sequence">1</field>
+           <field name="base_sign" eval="1"/>
+           <field name="tax_sign" eval="1"/>       
+           <field name="ref_base_sign" eval="1"/>
+           <field name="ref_tax_sign" eval="1"/>        
+       </record>
+       
+       <record model="account.tax.template" id="tva_is_vente">
+           <field name="name">TVAIS VENTE</field>
+           <field name="description">TVAIS-VENTE</field>
+           <field name="chart_template_id" ref="l10n_syscohada.syscohada_chart_template"/>
+           <field name="amount" eval="0.1925"/>
+           <field name="type">percent</field>
+           <field name="type_tax_use">sale</field>
+           <field name="sequence">1</field>
+           <field name="account_collected_id" ref="l10n_syscohada.pcg_4431"/>
+           <field name="account_paid_id" ref="l10n_syscohada.pcg_4431"/>
+           <field name="tax_code_id" ref="l10n_syscohada.tax_col_18"/>
+           <field name="ref_tax_code_id" ref="l10n_syscohada.tax_col_18"/>
+           <field name="base_sign" eval="1"/>
+           <field name="tax_sign" eval="1"/>       
+           <field name="ref_base_sign" eval="-1"/>
+           <field name="ref_tax_sign" eval="-1"/>
+       </record>
+       
+       <!--  Création sous taxe is   -->
+       <record model="account.tax.template" id="is_is">
+           <field name="name">IS</field>
+           <field name="description">IS</field>
+           <field name="chart_template_id" ref="l10n_syscohada.syscohada_chart_template"/>
+           <field name="amount" eval="0.0565"/>
+           <field name="price_include" eval="False"/>
+           <field name="type">percent</field>
+           <field name="type_tax_use">all</field>
+           <field name="sequence">1</field>
+           <field name="base_sign" eval="1"/>
+           <field name="tax_sign" eval="1"/>       
+           <field name="ref_base_sign" eval="-1"/>
+           <field name="ref_tax_sign" eval="-1"/>
+           <field name="parent_id" ref="tva_is_vente"/>
+       </record>
+       
+       
+       
+       <record model="account.tax.template" id="tva_is_retenue">
+           <field name="name">TVAIS RETENUE</field>
+           <field name="description">TVAIS-RETENUE</field>
+           <field name="chart_template_id" ref="l10n_syscohada.syscohada_chart_template"/>
+           <field name="amount" eval="0.1925"/>
+           <field name="type">percent</field>
+           <field name="type_tax_use">sale</field>
+           <field name="sequence">1</field>
+           <field name="account_collected_id" ref="l10n_syscohada.pcg_4441"/>
+           <field name="account_paid_id" ref="l10n_syscohada.pcg_4441"/>
+           <field name="base_sign" eval="1"/>
+           <field name="tax_sign" eval="1"/>       
+           <field name="ref_base_sign" eval="-1"/>
+           <field name="ref_tax_sign" eval="-1"/>
+       </record>
+       
+       <!--  Création 3 sous taxes  -->
+       <record model="account.tax.template" id="is_retenu_negatif">
+           <field name="name">IS-Retenu Négatif</field>
+           <field name="description">IS-RETENU-N</field>
+           <field name="chart_template_id" ref="l10n_syscohada.syscohada_chart_template"/>
+           <field name="amount" eval="-0.011"/>
+           <field name="price_include" eval="True"/>
+           <field name="type">percent</field>
+           <field name="type_tax_use">all</field>
+           <field name="sequence">1</field>
+           <field name="account_collected_id" ref="l10n_syscohada.pcg_4441"/>
+           <field name="account_paid_id" ref="l10n_syscohada.pcg_4441"/>
+           <field name="base_sign" eval="1"/>
+           <field name="tax_sign" eval="1"/>       
+           <field name="ref_base_sign" eval="1"/>
+           <field name="ref_tax_sign" eval="1"/>
+           <field name="parent_id" ref="tva_is_retenue"/>
+       </record>
+       
+       <record model="account.tax.template" id="tva_retenue">
+           <field name="name">TVA Retenue à la source</field>
+           <field name="description">TVA-RETENUE-S</field>
+           <field name="chart_template_id" ref="l10n_syscohada.syscohada_chart_template"/>
+           <field name="amount" eval="0.1925"/>
+           <field name="price_include" eval="False"/>
+           <field name="type">percent</field>
+           <field name="type_tax_use">all</field>
+           <field name="sequence">1</field>
+           <field name="account_collected_id" ref="l10n_syscohada.pcg_4441"/>
+           <field name="account_paid_id" ref="l10n_syscohada.pcg_4441"/>
+           <field name="base_sign" eval="0"/>
+           <field name="tax_sign" eval="0"/>       
+           <field name="ref_base_sign" eval="0"/>
+           <field name="ref_tax_sign" eval="0"/>
+           <field name="parent_id" ref="tva_is_retenue"/>
+       </record>
+       
+       <record model="account.tax.template" id="tva_afficher">
+           <field name="name">TVA (à afficher)</field>
+           <field name="description">TVA</field>
+           <field name="chart_template_id" ref="l10n_syscohada.syscohada_chart_template"/>
+           <field name="amount" eval="-0.1925"/>
+           <field name="price_include" eval="False"/>
+           <field name="type">percent</field>
+           <field name="type_tax_use">all</field>
+           <field name="sequence">1</field>
+           <field name="account_collected_id" ref="l10n_syscohada.pcg_4441"/>
+           <field name="account_paid_id" ref="l10n_syscohada.pcg_4441"/>
+           <field name="base_sign" eval="1"/>
+           <field name="tax_sign" eval="1"/>       
+           <field name="ref_base_sign" eval="1"/>
+           <field name="ref_tax_sign" eval="1"/>
+           <field name="parent_id" ref="tva_is_retenue"/>
+       </record>
+
+       <record model="account.tax.template" id="l10n_syscohada.tva_exonere">
+           <field name="name">Exonéré de TVA</field>
+           <field name="description">NONE</field>
+           <field name="amount" eval="0"/>
+           <field name="type">none</field>
+           <field name="base_sign" eval="1"/>
+           <field name="tax_sign" eval="1"/>       
+           <field name="ref_base_sign" eval="1"/>
+           <field name="ref_tax_sign" eval="1"/>
+       </record>
+       
+       <record model="account.tax.code.template" id="l10n_syscohada.tax_col_18_ht">
+         <field name="name">Base H.T. 19.25%</field>
+         <field name="code">TVA collectée à 19.25% (Base H.T.)</field>
+       </record>
+       <record model="account.tax.code.template" id="l10n_syscohada.tax_col_18">
+         <field name="name">TVA 19.25%</field>
+         <field name="code">TVA collectée à 19.25%</field>
+       </record>
+       
+       <record model="account.tax.code.template" id="l10n_syscohada.tax_acq_18_ht">
+         <field name="name">Base H.T. 19.25%</field>
+         <field name="code">TVA acquittée à 19.25% (Base H.T.)</field>
+       </record>    
+   
+       <record model="account.tax.code.template" id="l10n_syscohada.tax_acq_18">
+         <field name="name">TVA 19.25%</field>
+         <field name="code">TVA acquittée à 19.25%</field>
+       </record>    
+       
+       <record model="account.tax.template" id="l10n_syscohada.tva_sale_18">
+           <field name="name">TVA VENTE</field>
+           <field name="description">TVA-VENTE</field>
+           <field name="amount" eval="0.1925"/>
+           <field name="account_collected_id" ref="l10n_syscohada.pcg_4431"/>
+           <field name="account_paid_id" ref="l10n_syscohada.pcg_4431"/>
+           <field name="base_code_id" ref=""/>
+           <field name="ref_base_code_id" ref=""/>
+           <field name="tax_code_id" ref="l10n_syscohada.tax_col"/>
+           <field name="ref_tax_code_id" ref="l10n_syscohada.tax_col"/>
+       </record>
+       
+       
+       <record model="account.tax.template" id="l10n_syscohada.tva_purchase_18">
+           <field name="name">TVA ACHAT</field>
+           <field name="description">TVA-ACHAT</field>
+           <field name="amount" eval="0.1925"/>
+           <field name="account_collected_id" ref="l10n_syscohada.pcg_4452"/>
+           <field name="account_paid_id" ref="l10n_syscohada.pcg_4452"/>
+           <field name="base_code_id" ref=""/>
+           <field name="tax_code_id" ref=""/>
+           <field name="ref_base_code_id" ref=""/>
+           <field name="ref_tax_code_id" ref=""/>
+       </record>
+       
+       <!--  Création des positions fiscales   -->
+       <record model="account.fiscal.position.template" id="pf_Exon_TVAIS">
+           <field name="name">Exoneration TVAIS</field>
+           <field name="chart_template_id" ref="l10n_syscohada.syscohada_chart_template"/>
+       </record>
+       <record model="account.fiscal.position.template" id="pf_TVAIS_ret">
+           <field name="name">TVAIS Retenue à la source</field>
+           <field name="chart_template_id" ref="l10n_syscohada.syscohada_chart_template"/>
+       </record>
+       <record model="account.fiscal.position.template" id="pf_ttc">
+           <field name="name">TTC</field>
+           <field name="chart_template_id" ref="l10n_syscohada.syscohada_chart_template"/>
+       </record>
+       <record model="account.fiscal.position.template" id="pf_Exon_TVA">
+           <field name="name">Exonéré TVA</field>
+           <field name="chart_template_id" ref="l10n_syscohada.syscohada_chart_template"/>
+       </record>
+       <record model="account.fiscal.position.template" id="pf_retunue_is">
+           <field name="name">Retunue IS</field>
+           <field name="chart_template_id" ref="l10n_syscohada.syscohada_chart_template"/>
+       </record>
+       
+         <!--Ajout des taxes à la position fiscale: exonération TVAIS   -->
+       <record model="account.fiscal.position.tax.template" id="ftax_Exon_TVAIS1">
+           <field name="position_id" ref="pf_Exon_TVAIS" />
+           <field name="tax_src_id" ref="tva_is_vente" />
+       </record>
+       <record model="account.fiscal.position.tax.template" id="ftax_Exon_TVAIS2">
+           <field name="position_id" ref="pf_Exon_TVAIS" />
+           <field name="tax_src_id" ref="tva_is_retenue" />
+       </record>
+       <record model="account.fiscal.position.tax.template" id="ftax_Exon_TVAIS3">
+           <field name="position_id" ref="pf_Exon_TVAIS" />
+           <field name="tax_src_id" ref="l10n_syscohada.tva_sale_18" />
+       </record>
+       <record model="account.fiscal.position.tax.template" id="ftax_Exon_TVAIS4">
+           <field name="position_id" ref="pf_Exon_TVAIS" />
+           <field name="tax_src_id" ref="is_retenue" />
+       </record>
+       
+         <!--Ajout des taxes à la position fiscale TVAIS Retenue à la source.   -->
+       <record model="account.fiscal.position.tax.template" id="ftax_TVAIS_Retenue1">
+           <field name="position_id" ref="pf_TVAIS_ret" />
+           <field name="tax_src_id" ref="l10n_syscohada.tva_exonere" />
+           <field name="tax_dest_id" ref="tva_is_retenue" />
+       </record>
+       <record model="account.fiscal.position.tax.template" id="ftax_TVAIS_Retenue2">
+           <field name="position_id" ref="pf_TVAIS_ret" />
+           <field name="tax_src_id" ref="tva_is_vente" />
+           <field name="tax_dest_id" ref="tva_is_retenue" />
+       </record>
+       <record model="account.fiscal.position.tax.template" id="ftax_TVAIS_Retenue3">
+           <field name="position_id" ref="pf_TVAIS_ret" />
+           <field name="tax_src_id" ref="l10n_syscohada.tva_sale_18" />
+           <field name="tax_dest_id" ref="tva_is_retenue" />
+       </record>
+       <record model="account.fiscal.position.tax.template" id="ftax_TVAIS_Retenue4">
+           <field name="position_id" ref="pf_TVAIS_ret" />
+           <field name="tax_src_id" ref="is_retenue" />
+           <field name="tax_dest_id" ref="tva_is_retenue" />
+       </record>
+       
+         <!--Ajout des taxes à la position fiscale TTC.   -->
+       <record model="account.fiscal.position.tax.template" id="ftax_TTC1">
+           <field name="position_id" ref="pf_ttc" />
+           <field name="tax_src_id" ref="l10n_syscohada.tva_exonere" />
+           <field name="tax_dest_id" ref="tva_is_vente" />
+       </record>
+       <record model="account.fiscal.position.tax.template" id="ftax_TTC2">
+           <field name="position_id" ref="pf_ttc" />
+           <field name="tax_src_id" ref="tva_is_retenue" />
+           <field name="tax_dest_id" ref="tva_is_vente" />
+       </record>
+       <record model="account.fiscal.position.tax.template" id="ftax_TTC3">
+           <field name="position_id" ref="pf_ttc" />
+           <field name="tax_src_id" ref="l10n_syscohada.tva_sale_18" />
+           <field name="tax_dest_id" ref="tva_is_vente" />
+       </record>
+       <record model="account.fiscal.position.tax.template" id="ftax_TTC4">
+           <field name="position_id" ref="pf_ttc" />
+           <field name="tax_src_id" ref="is_retenue" />
+           <field name="tax_dest_id" ref="tva_is_vente" />
+       </record>
+       
+         <!--Ajout des taxes à la position fiscale IS Retenue.   -->
+       <record model="account.fiscal.position.tax.template" id="ftax_retunue_is1">
+           <field name="position_id" ref="pf_retunue_is" />
+           <field name="tax_src_id" ref="l10n_syscohada.tva_exonere" />
+           <field name="tax_dest_id" ref="is_retenue" />
+       </record>
+       <record model="account.fiscal.position.tax.template" id="ftax_retunue_is2">
+           <field name="position_id" ref="pf_retunue_is" />
+           <field name="tax_src_id" ref="tva_is_vente" />
+           <field name="tax_dest_id" ref="is_retenue" />
+       </record>
+       <record model="account.fiscal.position.tax.template" id="ftax_retunue_is3">
+           <field name="position_id" ref="pf_retunue_is" />
+           <field name="tax_src_id" ref="l10n_syscohada.tva_sale_18" />
+           <field name="tax_dest_id" ref="is_retenue" />
+       </record>
+       <record model="account.fiscal.position.tax.template" id="ftax_retunue_is4">
+           <field name="position_id" ref="pf_retunue_is" />
+           <field name="tax_src_id" ref="tva_is_retenue" />
+           <field name="tax_dest_id" ref="is_retenue" />
+       </record>
+   </data>
+ </openerp>
