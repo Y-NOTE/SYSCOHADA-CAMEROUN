@@ -1,9 +1,9 @@
 ##############################################################################
-#
-#    CloudFacile based on Odoo, Open Source Management Solution
-#    Copyright (C) 2015  (<http://www.cloudfacile.com>).
-#    Site: www.y-note.cm
-#
+
+    CloudFacile based on Odoo, Open Source Management Solution
+    Copyright (C) 2015  (<http://www.cloudfacile.com>).
+    Site: www.y-note.cm
+
 ##############################################################################
 
 # SYSCOHADA-CAMEROUN
