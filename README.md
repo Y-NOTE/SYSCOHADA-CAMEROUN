@@ -6,7 +6,7 @@
 
 ##############################################################################
 
-# SYSCOHADA-CAMEROUN
+ SYSCOHADA-CAMEROUN (V8)
 
         Le module sycohada_cameroun est un module devéloppé par Y-NOTE permettant pour de nouvelles instances de base de l'ERP Odoo,
     d'integrer directement les taxes et positions fiscales aux normes camerounaises pour la comptabilité OHADA.
