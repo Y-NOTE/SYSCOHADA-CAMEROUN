@@ -1,11 +1,3 @@
-##############################################################################
-
-    CloudFacile based on Odoo, Open Source Management Solution
-    Copyright (C) 2015  (<http://www.cloudfacile.com>).
-    Site: www.y-note.cm
-
-##############################################################################
-
  SYSCOHADA-CAMEROUN (V8)
 
         Le module sycohada_cameroun est un module devéloppé par Y-NOTE permettant pour de nouvelles instances de base de l'ERP Odoo,
@@ -36,3 +28,23 @@
     Une fois les changements appliqués, Odoo lancera l'opération de création des taxes et codes correspondants.
     
     NB: Si pendant l'installation du module du module l10n_syscohada, l'étape de configuration des taxes par defaut n'est pas affichée(ou est affichée mais les nouvelles taxes enoncées plus haut n'y figurent pas), vous pouvez annuler ce formulaire de configuration et vous rendre dans 'Configuration - Comptabilité' pour y effectuer les parametrages par défaut.
+    
+##############################################################################
+
+    SYSCOHADA-CAMEROUN
+    Copyright (c) Y-Note, All rights reserved.
+    
+    This library is free software; you can redistribute it and/or
+    modify it under the terms of the GNU Lesser General Public
+    License as published by the Free Software Foundation; either
+    version 3.0 of the License, or (at your option) any later version.
+    
+    This library is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+    Lesser General Public License for more details.
+    
+    You should have received a copy of the GNU Lesser General Public
+    License along with this library.
+
+##############################################################################
